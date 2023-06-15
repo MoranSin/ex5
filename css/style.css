@@ -3,3 +3,7 @@
 #wrapper{
     display: flex;
 }
+
+.card-img-top{
+    width: 500px;
+}

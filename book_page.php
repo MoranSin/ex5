@@ -20,9 +20,12 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>		<!-- <link href="includes/style.css" rel="stylesheet"> -->
 	</head>
 	<body>
-	    <div class="container">
-		
-		<?php 
+		<div class="container">
+			
+			<section id="cat"></section>
+			<section id="bookPrice"></section>
+			<script src="js/getcat.js"></script>
+			<?php 
 		// echo '<h3>Category ' . $row["cat_id"] .'</h3>';
 		echo '<h1>' . $row["book_name"] .'</h1>';
         echo '<section> Author:' . $row["book_author"] . '</section>';
@@ -30,6 +33,8 @@
 		$img = $row["book_bg"];
 		echo '<img src="' . $img . '">';
 		?> 
+		
+
 	
 		<?php mysqli_free_result($result); ?>
 	    </div>

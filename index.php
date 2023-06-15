@@ -19,13 +19,13 @@ if(!$result) {
     <header>
     <h1>Moran's Favorite Books & Novels</h1>
 </header>
-<main id="wrapper">
+<main class="container pb-5 mb-2 mb-md-4 mb-lg-5>
     <?php
     while($row = mysqli_fetch_assoc($result)) {
 			$img = $row["book_img"];
-			echo '<div class="col-sm-3">';
-			echo    '<div class="card">';
-			echo 		'<img src="' . $img . '" class="card-img-top">';
+			echo    '<div class="row pb-lg-3">';
+			echo    '<div class="col-md-5 mb-2">';
+			echo 		'<img src="' . $img . '" class="container-sm">';
 			echo 		'<div class="card-body">';
 			echo   		'<h5 class="card-title">' . $row["book_name"] . '</h5>';
 			echo    	'<a href="book_page.php?book_id=' . $row["book_id"] . '" class="btn btn-primary">See book details</a>';

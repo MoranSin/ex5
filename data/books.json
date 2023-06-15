@@ -1,0 +1,25 @@
+{  
+    "category": "Books",  
+    "products": [  
+        {  
+            "book_id": "1", 
+            "categories": ["Danmei","Xiaxia","Fantasy","Romance","Mystery","LGBT","Action"], 
+            "price": 16.65  
+        },  
+        {  
+            "id": "2",   
+            "categories": ["Danmei","Xiaxia","Fantasy","Romance","Mystery","LGBT","Action"], 
+            "price": 7.03  
+        },  
+        {  
+            "id": "3",   
+            "categories": ["Danmei","Xiaxia","Fantasy","Romance","Mystery","LGBT","Action"], 
+            "price": 9.23  
+        },
+        {  
+            "id": "4",   
+            "categories": ["Humor","Parody","Fantasy","Samurai","Sci-Fi","Action"], 
+            "price": 9.23  
+        }
+    ]  
+}
