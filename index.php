@@ -1,43 +1,61 @@
 <?php
 include 'db.php';
-$query 	= "SELECT * FROM tbl_61_books order by book_name";
+if (isset($_GET['categoryId'])) {
+    $category = $_GET["categoryId"];
+    $query = "SELECT * FROM tbl_61_books where cat_id=" . $category;
+}else{
+    $query 	= "SELECT * FROM tbl_61_books";
+}
 $result = mysqli_query($connection, $query);
 if(!$result) {
     die("DB query failed.");
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>5th Practice</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>	
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5th Assignment</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/getcat.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header>
-    <h1>Moran's Favorite Books & Novels</h1>
-</header>
-<main class="container pb-5 mb-2 mb-md-4 mb-lg-5>
-    <?php
+    <nav class="nav-bar">
+        <div class="nav1">
+            <div id="dataServices"></div>
+        </div>
+        <h3>Moran Sinai</h3>
+</nav>
+<main>
+<?php
     while($row = mysqli_fetch_assoc($result)) {
 			$img = $row["book_img"];
-			echo    '<div class="row pb-lg-3">';
-			echo    '<div class="col-md-5 mb-2">';
-			echo 		'<img src="' . $img . '" class="container-sm">';
-			echo 		'<div class="card-body">';
-			echo   		'<h5 class="card-title">' . $row["book_name"] . '</h5>';
-			echo    	'<a href="book_page.php?book_id=' . $row["book_id"] . '" class="btn btn-primary">See book details</a>';
+            echo '<div class="col" data-category="'.$row["cat_id"].'">';
+            echo '<div class="books">';
+            echo '<div>';
+			echo 		'<img src="' . $img . '" class="book-img">';
+            echo '</div>';
+			echo    '<div class="descp">';
+			echo   		'<h2 class="book-name">' . $row["book_name"] . '</h2>';
+			echo    	'<a href="book_page.php?book_id=' . $row["book_id"] . '">See book details</a>';
 			echo '</div></div></div>';
+
 		}
         ?>
 
+
 <?php mysqli_free_result($result);?>
-
-
 </main>
+
 </body>
+
 </html>
 <?php mysqli_close($connection); ?>
-
